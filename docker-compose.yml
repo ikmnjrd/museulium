@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/usr/src/app 
+    command: sh -c "cd museulium && yarn start"
+    ports:
+      - "4000:3000"
+    tty: true
