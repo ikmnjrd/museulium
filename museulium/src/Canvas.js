@@ -9,10 +9,12 @@ class Canvas extends Component {
   constructor() {
     super();
     this.state = { drawing: false };
+    this.canvasRef = React.createRef();
   }
 
   getContext() {
-    return this.refs.canvas.getContext('2d');
+    console.log(this);
+    return this.canvasRef.current.getContext('2d');
   }
 
   startDrawing(x, y) {
@@ -37,7 +39,7 @@ class Canvas extends Component {
   render() {
     return (
       <canvas
-        ref="canvas"
+        ref={this.canvasRef}
         width="500px"
         height="500px"
         onMouseDown={e => this.startDrawing(e.nativeEvent.offsetX, e.nativeEvent.offsetY)}
