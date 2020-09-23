@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Canvas from './Canvas';
-import Toolbox from './Toolbox';
+import KonvaTest from './KonvaTest';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Canvas />
+    <KonvaTest />
   </React.StrictMode>,
   document.getElementById('root')
 );

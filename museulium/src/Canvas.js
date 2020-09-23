@@ -5,6 +5,22 @@ const style = {
   backgroundColor: 'white',
 };
 
+
+
+function ClearButton(props){
+  //props.canvasRef.current.getContext('2d').clearRect(0,0,props.canvasRef.current.width, props.canvasRef.current.height);
+  //props.getContext().beginPath();
+
+  return (
+    <div>
+      <button className="clear-button" onClick={props.onClick}>
+        Clear
+      </button>
+    </div>
+  );
+}
+
+
 class Canvas extends Component {
   constructor() {
     super();
@@ -13,7 +29,7 @@ class Canvas extends Component {
   }
 
   getContext() {
-    console.log(this);
+    console.log(this.canvasRef);
     return this.canvasRef.current.getContext('2d');
   }
 
@@ -34,20 +50,38 @@ class Canvas extends Component {
 
   endDrawing() {
     this.setState({ drawing: false });
+    
+  }
+  Clear(){
+    this.canvasRef.current.getContext('2d').clearRect(0,0,this.canvasRef.current.width, this.canvasRef.current.height);
+    this.getContext().beginPath();
   }
 
+
+
   render() {
+    console.log(this.ref);
+
     return (
-      <canvas
-        ref={this.canvasRef}
-        width="500px"
-        height="500px"
-        onMouseDown={e => this.startDrawing(e.nativeEvent.offsetX, e.nativeEvent.offsetY)}
-        onMouseUp={() => this.endDrawing()}
-        onMouseLeave={() => this.endDrawing()}
-        onMouseMove={e => this.draw(e.nativeEvent.offsetX, e.nativeEvent.offsetY)}
-        style={style}
-      />
+      <div>
+        <div>
+          <canvas
+            ref={this.canvasRef}
+            width="500px"
+            height="500px"
+            onMouseDown={e => this.startDrawing(e.nativeEvent.offsetX, e.nativeEvent.offsetY)}
+            onMouseUp={() => this.endDrawing()}
+            onMouseLeave={() => this.endDrawing()}
+            onMouseMove={e => this.draw(e.nativeEvent.offsetX, e.nativeEvent.offsetY)}
+            style={style}
+          />
+        </div>
+        <div>
+          <ClearButton
+            onClick={() => this.Clear()}
+          />
+        </div>
+      </div>
     );
   }
 }
