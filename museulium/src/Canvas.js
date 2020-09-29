@@ -73,6 +73,7 @@ class Canvas extends Component {
             onMouseUp={() => this.endDrawing()}
             onMouseLeave={() => this.endDrawing()}
             onMouseMove={e => this.draw(e.nativeEvent.offsetX, e.nativeEvent.offsetY)}
+            ontouchstart={e => this.startDrawing(e.nativeEvent.offsetX, e.nativeEvent.offsetY)}
             style={style}
           />
         </div>
