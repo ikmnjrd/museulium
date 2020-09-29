@@ -110,4 +110,4 @@ const KonvaTest = () => {
   );
 };
 
-export default KonvaTest2;
+export default KonvaTest;
