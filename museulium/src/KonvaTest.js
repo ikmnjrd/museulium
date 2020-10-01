@@ -105,7 +105,6 @@ const KonvaTest = () => {
       <ClearButton
        clearCanvas={clearCanvas}
       />
-
     </div>
   );
 };
