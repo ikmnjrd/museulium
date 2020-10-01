@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Canvas from './Canvas';
+import Connect from './Connect';
 import KonvaTest from './KonvaTest';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <KonvaTest />
+    <Connect />
   </React.StrictMode>,
   document.getElementById('root')
 );
