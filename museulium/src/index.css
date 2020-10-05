@@ -15,3 +15,9 @@ code {
 .konvajs-content {
   border: solid 10px #F5DEB3;
 }
+
+
+.imgbutton{
+  -webkit-appearance: none;
+  appearance: none;
+}
