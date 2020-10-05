@@ -1,6 +1,9 @@
 import React from 'react';
 
-function Connect() {
+const met_json = require('./metId.json');
+const metObjs = met_json.metObjIds;
+
+function CallMet() {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [items, setItems] = React.useState([]);
@@ -10,13 +13,13 @@ function Connect() {
   // this useEffect will run once
   // similar to componentDidMount()
   React.useEffect(() => {
-    fetch("https://collectionapi.metmuseum.org/public/collection/v1/objects/546303")
+    const random_obj = metObjs[Math.floor( Math.random() * metObjs.length)];
+    fetch("https://us-central1-museulium-api-express3.cloudfunctions.net/api/met/"+random_obj)
       .then(res => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
           setItems(result);
-          console.log(result);
         },
 
         // Note: it's important to handle errors here
@@ -35,11 +38,11 @@ function Connect() {
     return <div>Loading...</div>;
   } else {
     return (
-      <ul>
-
-      </ul>
+      <div>
+        <img src={items.primaryImage} alt="met_pic" width="500px" height="500px" />
+      </div>  
     );
   }
 }
 
-export default Connect;
+export default CallMet;
