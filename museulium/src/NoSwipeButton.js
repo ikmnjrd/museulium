@@ -1,11 +1,28 @@
 import React from 'react';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 const NoSwipeButton = ({handleNoSwipe}) => {
-  return (
+  const [check,setCheck] = React.useState(true);
 
-      <label>Enable Swipe in Canvas
-        <input type="checkbox" onClick={handleNoSwipe}></input>
-      </label>
+  const ExecuteCheck = () => {
+    setCheck(!check);
+    handleNoSwipe();
+  }
+
+  return (
+      <FormControlLabel
+        className=""
+        control={
+          <Switch
+            checked={check}
+            color="secondary"
+            // inputProps={{ 'aria-label': 'secondary checkbox' }}
+            onClick={ExecuteCheck}
+          />
+        }
+        label="Disable Swipe"
+      />
   );
 }
 

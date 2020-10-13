@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import Backdrop from '@material-ui/core/Backdrop';
 
 const met_json = require('./metId.json');
 const metObjs = met_json.metObjIds;
@@ -25,7 +26,6 @@ function CallMet() {
   const [items, setItems] = React.useState([]);
 
   // Modal part
-  var subtitle;
   const [modalIsOpen,setIsOpen] = React.useState(false);
 
   // API part
@@ -59,7 +59,7 @@ function CallMet() {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    // subtitle.style.color = '#f00';
   }
 
   function closeModal(){
@@ -72,10 +72,9 @@ function CallMet() {
     return <div>Loading...</div>;
   } else {
     return (
-      <div>
-        <button onClick={openModal} className="imgbutton">
-          <img src={items.primaryImage} alt="met_pic" width="100px" height="100px" />
-        </button>
+      <React.Fragment>
+        <img src={items.primaryImage} onClick={openModal} alt="met_pic" width="100px" height="100px" />
+
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
@@ -83,11 +82,11 @@ function CallMet() {
           style={customStyles}
           contentLabel="Odaimoku-Modal"
         >
-          <h2 ref={_subtitle => (subtitle = _subtitle)}>お題</h2>
-          <img src={items.primaryImage} alt="met_pic" width="500px" height="500px" />
-          <button onClick={closeModal}>close</button>
+          {/* <h2 ref={_subtitle => (subtitle = _subtitle)}>お題</h2> */}
+          <img src={items.primaryImage} alt="met_pic" width={window.innerWidth} height={window.innerHeight *0.6} />
         </Modal>
-      </div>  
+
+      </React.Fragment>  
     );
   }
 }

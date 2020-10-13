@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import CallMet from './CallMet';
 import KonvaTest from './KonvaTest';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <KonvaTest />
-    <CallMet />
   </React.StrictMode>,
   document.getElementById('root')
 );
