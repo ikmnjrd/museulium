@@ -1,8 +1,48 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Stage, Layer, Line, Text } from 'react-konva';
-import NoSwipeButton from './NoSwipeButton';
-import ClearButton from './ClearButton';
-//import TestButton from './TestButton';
+
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import {makeStyles} from '@material-ui/core/styles';
+import Fab from '@material-ui/core/Fab';
+import CallMet from './CallMet';
+import DialMenu from './DialMenu';
+import Tools from './Tools';
+
+
+
+
+const useStyles = makeStyles((theme) => ({
+  text: {
+    padding: theme.spacing(2, 2, 0),
+  },
+  paper: {
+    paddingBottom: 50,
+  },
+  list: {
+    marginBottom: theme.spacing(2),
+  },
+  subheader: {
+    backgroundColor: theme.palette.background.paper,
+  },
+  appBar: {
+    top: 'auto',
+    bottom: 0,
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  fabButton: {
+    position: 'absolute',
+    zIndex: 1,
+    top: -30,
+    left: 0,
+    right: 0,
+    margin: '0 auto',
+  },
+}));
+
+
 
 const KonvaTest = () => {
   const [tool, setTool] = React.useState('pen');
@@ -12,6 +52,7 @@ const KonvaTest = () => {
 
 
   const stageRef = React.useRef();
+  const classes = useStyles();
   
 
   const handleMouseDown = (e) => {
@@ -57,11 +98,18 @@ const KonvaTest = () => {
     stageRef.current.clear();
   }
 
+  const setToolChild = (value) =>{
+    setTool(value);
+  }
+  const getToolChild =() =>{
+    return {tool: tool};
+  }
+
 
   return (
-    <div>
+    <React.Fragment>
       <Stage
-        width={window.innerWidth *0.9}
+        width={window.innerWidth * 0.98}
         height={window.innerHeight *0.9}
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
@@ -88,24 +136,27 @@ const KonvaTest = () => {
           ))}
         </Layer>
       </Stage>
-      <select
-        value={tool}
-        onChange={(e) => {
-          setTool(e.target.value);
-        }}
-      >
-        <option value="pen">Pen</option>
-        <option value="eraser">Eraser</option>
-      </select>
-      
-      <NoSwipeButton
-        type="checkbox"
-        handleNoSwipe={handleNoSwipe}
-      />
-      <ClearButton
-       clearCanvas={clearCanvas}
-      />
-    </div>
+
+      <AppBar position="fixed" color="primary"  className={classes.appBar}>
+        <Toolbar>
+
+          <DialMenu
+            clearCanvas={clearCanvas}
+            handleNoSwipe={handleNoSwipe}
+          />
+
+          <Fab className={classes.fabButton}>
+            <CallMet />
+          </Fab>
+
+          <Tools
+            setToolChild={setToolChild}
+            getToolChild={getToolChild}
+          />
+
+        </Toolbar>
+      </AppBar>
+    </React.Fragment>
   );
 };
 

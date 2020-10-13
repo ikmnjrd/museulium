@@ -13,11 +13,16 @@ code {
 }
 
 .konvajs-content {
-  border: solid 10px #F5DEB3;
+  border: solid 0.2rem black;
 }
 
 
-.imgbutton{
-  -webkit-appearance: none;
-  appearance: none;
+.inline-block_test {
+  display: inline-block;      /* インラインブロック要素にする */    /* 背景色指定 */
+  padding: 10px;              /* 余白指定 */
+  margin-top: 1rem;
+}
+
+.right {
+  float: right;
 }
