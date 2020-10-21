@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import KonvaTest from './KonvaTest';
 import Start from './Start';
+import EndPage from './EndPage';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,6 +14,7 @@ ReactDOM.render(
       <Switch >
         <Route exact path="/" children={<Start />} />
         <Route path="/play" children={<KonvaTest />} />
+        <Route path="/end" children={<EndPage />} />
       </Switch>
 
     </Router>

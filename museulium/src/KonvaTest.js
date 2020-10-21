@@ -8,29 +8,14 @@ import Fab from '@material-ui/core/Fab';
 import CallMet from './CallMet';
 import DialMenu from './DialMenu';
 import Tools from './Tools';
+import Timer from './Timer';
 
-import {BrowserRouter as Router, Switch, Route, Link, useHistory, useLocation, useParams} from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
-  text: {
-    padding: theme.spacing(2, 2, 0),
-  },
-  paper: {
-    paddingBottom: 50,
-  },
-  list: {
-    marginBottom: theme.spacing(2),
-  },
-  subheader: {
-    backgroundColor: theme.palette.background.paper,
-  },
   appBar: {
     top: 'auto',
     bottom: 0,
-  },
-  grow: {
-    flexGrow: 1,
   },
   fabButton: {
     position: 'absolute',
@@ -145,6 +130,8 @@ const KonvaTest = () => {
             clearCanvas={clearCanvas}
             handleNoSwipe={handleNoSwipe}
           />
+
+          <Timer />
 
           <Fab className={classes.fabButton}>
             <CallMet />
