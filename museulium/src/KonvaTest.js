@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React from 'react';
 import { Stage, Layer, Line, Text } from 'react-konva';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -110,7 +110,7 @@ const KonvaTest = () => {
     return {tool: tool};
   }
 
-  const handleUndo = (e) => {
+  const handleUndo = () => {
     if (historyStep === 0){
       return;
     }
@@ -119,7 +119,7 @@ const KonvaTest = () => {
     historyStep -= 1;
   }
 
-  const handleRedo = (e) => {
+  const handleRedo = () => {
     if (historyStep === linesCopy.length){
       return;
     }
