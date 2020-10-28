@@ -8,14 +8,11 @@ import Fab from '@material-ui/core/Fab';
 import CallMet from './CallMet';
 import DialMenu from './DialMenu';
 import Tools from './Tools';
-<<<<<<< HEAD
 import Timer from './Timer';
-=======
 import Button from '@material-ui/core/Button';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
 
->>>>>>> master
 
 
 const useStyles = makeStyles((theme) => ({
@@ -158,13 +155,10 @@ const KonvaTest = (props) => {
             handleNoSwipe={handleNoSwipe}
           />
 
-<<<<<<< HEAD
           <Timer />
-=======
           <Button onClick ={handleUndo}>
             <UndoIcon />
           </Button>
->>>>>>> master
 
           <Fab className={classes.fabButton}>
             <CallMet />
