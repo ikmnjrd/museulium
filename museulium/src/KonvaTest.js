@@ -8,7 +8,14 @@ import Fab from '@material-ui/core/Fab';
 import CallMet from './CallMet';
 import DialMenu from './DialMenu';
 import Tools from './Tools';
+<<<<<<< HEAD
 import Timer from './Timer';
+=======
+import Button from '@material-ui/core/Button';
+import UndoIcon from '@material-ui/icons/Undo';
+import RedoIcon from '@material-ui/icons/Redo';
+
+>>>>>>> master
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,14 +33,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
+let historyStep = 0;
 
 const KonvaTest = (props) => {
   const [tool, setTool] = React.useState('pen');
   const [lines, setLines] = React.useState([]);
+  const [linesCopy, setLinesCopy] = React.useState([]);
   const isDrawing = React.useRef(false);
   const [noSwipeFlag,setNoSwipeFlag] = React.useState(true);
-
 
   const stageRef = React.useRef();
   const classes = useStyles();
@@ -58,6 +65,7 @@ const KonvaTest = (props) => {
     const stage = e.target.getStage();
     const point = stage.getPointerPosition();
     let lastLine = lines[lines.length - 1];
+
     // add point
     lastLine.points = lastLine.points.concat([point.x, point.y]);
 
@@ -72,6 +80,8 @@ const KonvaTest = (props) => {
 
   const handleMouseUp = () => {
     isDrawing.current = false;
+    historyStep += 1;
+    setLinesCopy(JSON.parse(JSON.stringify(lines)));
   };
 
   const handleNoSwipe = () =>{
@@ -90,6 +100,23 @@ const KonvaTest = (props) => {
     return {tool: tool};
   }
 
+  const handleUndo = () => {
+    if (historyStep === 0){
+      return;
+    }
+    lines.pop();
+    setLines(lines.concat());
+    historyStep -= 1;
+  }
+
+  const handleRedo = () => {
+    if (historyStep === linesCopy.length){
+      return;
+    }
+    lines.push(linesCopy[historyStep]);
+    setLines(lines.concat());
+    historyStep += 1;
+  }
 
   return (
     <React.Fragment>
@@ -106,6 +133,7 @@ const KonvaTest = (props) => {
       >
         <Layer>
           <Text text="Just start drawing" x={5} y={30} />
+
           {lines.map((line, i) => (
             <Line
               key={i}
@@ -130,11 +158,21 @@ const KonvaTest = (props) => {
             handleNoSwipe={handleNoSwipe}
           />
 
+<<<<<<< HEAD
           <Timer />
+=======
+          <Button onClick ={handleUndo}>
+            <UndoIcon />
+          </Button>
+>>>>>>> master
 
           <Fab className={classes.fabButton}>
             <CallMet />
           </Fab>
+
+          <Button onClick={handleRedo}>
+            <RedoIcon />
+          </Button>
 
           <Tools
             setToolChild={setToolChild}
@@ -144,6 +182,7 @@ const KonvaTest = (props) => {
         </Toolbar>
       </AppBar>
     </React.Fragment>
+
   );
 };
 
