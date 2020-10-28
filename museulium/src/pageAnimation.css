@@ -1,0 +1,19 @@
+.page {
+  position: absolute;
+  background-color: #fff ;
+  width:100%;
+}
+
+.pageTransition-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.pageTransition-enter-active {
+  z-index: 2;
+  transition: opacity 100ms ease-out, transform 200ms ease-out;
+  opacity: 1;
+  transform: translateX(0px);
+}
+.pageTransition-exit-active {
+  z-index: 1;
+}

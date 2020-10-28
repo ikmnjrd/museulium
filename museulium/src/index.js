@@ -1,22 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import KonvaTest from './KonvaTest';
-import Start from './Start';
-import EndPage from './EndPage';
+import RouteManager from './RouteManager';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <Switch >
-        <Route exact path="/" children={<Start />} />
-        <Route path="/play" children={<KonvaTest />} />
-        <Route path="/end" children={<EndPage />} />
-      </Switch>
-
+      <RouteManager />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

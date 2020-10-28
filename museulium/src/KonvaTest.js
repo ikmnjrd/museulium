@@ -11,7 +11,6 @@ import Tools from './Tools';
 import Timer from './Timer';
 
 
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     top: 'auto',
@@ -29,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const KonvaTest = () => {
+const KonvaTest = (props) => {
   const [tool, setTool] = React.useState('pen');
   const [lines, setLines] = React.useState([]);
   const isDrawing = React.useRef(false);
@@ -39,7 +38,7 @@ const KonvaTest = () => {
   const stageRef = React.useRef();
   const classes = useStyles();
 
-  
+  console.log(props);
 
   const handleMouseDown = (e) => {
     isDrawing.current = true;
