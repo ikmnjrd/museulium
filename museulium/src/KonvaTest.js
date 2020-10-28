@@ -8,6 +8,7 @@ import Fab from '@material-ui/core/Fab';
 import CallMet from './CallMet';
 import DialMenu from './DialMenu';
 import Tools from './Tools';
+import Timer from './Timer';
 import Button from '@material-ui/core/Button';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
@@ -15,24 +16,9 @@ import RedoIcon from '@material-ui/icons/Redo';
 
 
 const useStyles = makeStyles((theme) => ({
-  text: {
-    padding: theme.spacing(2, 2, 0),
-  },
-  paper: {
-    paddingBottom: 50,
-  },
-  list: {
-    marginBottom: theme.spacing(2),
-  },
-  subheader: {
-    backgroundColor: theme.palette.background.paper,
-  },
   appBar: {
     top: 'auto',
     bottom: 0,
-  },
-  grow: {
-    flexGrow: 1,
   },
   fabButton: {
     position: 'absolute',
@@ -46,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 let historyStep = 0;
 
-const KonvaTest = () => {
+const KonvaTest = (props) => {
   const [tool, setTool] = React.useState('pen');
   const [lines, setLines] = React.useState([]);
   const [linesCopy, setLinesCopy] = React.useState([]);
@@ -55,7 +41,8 @@ const KonvaTest = () => {
 
   const stageRef = React.useRef();
   const classes = useStyles();
-  
+
+  console.log(props);
 
   const handleMouseDown = (e) => {
     isDrawing.current = true;
@@ -168,6 +155,7 @@ const KonvaTest = () => {
             handleNoSwipe={handleNoSwipe}
           />
 
+          <Timer />
           <Button onClick ={handleUndo}>
             <UndoIcon />
           </Button>

@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import KonvaTest from './KonvaTest';
+import RouteManager from './RouteManager';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter as Router} from "react-router-dom";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <KonvaTest />
+    <Router>
+      <RouteManager />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
