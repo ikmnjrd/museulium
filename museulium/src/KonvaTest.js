@@ -115,6 +115,10 @@ const KonvaTest = (props) => {
     historyStep += 1;
   }
 
+  const createImageData = () => {
+    return stageRef.current.toDataURL();
+  }
+
   return (
     <React.Fragment>
       <Stage
@@ -155,7 +159,8 @@ const KonvaTest = (props) => {
             handleNoSwipe={handleNoSwipe}
           />
 
-          <Timer />
+          <Timer createImageData={createImageData}/>
+
           <Button onClick ={handleUndo}>
             <UndoIcon />
           </Button>
