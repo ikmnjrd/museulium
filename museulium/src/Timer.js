@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import {useHistory} from "react-router-dom";
 import Box from '@material-ui/core/Box';
 import useInterval from 'use-interval';
+import { Typography } from '@material-ui/core';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 
 
 const Timer = ({createImageData}) =>{
-  const [time, setTime] = useState(0);
+  // timeLimit = x(seconds)
+  const [timeLimit, setTimeLimit] = useState(300);
   let history = useHistory();
-  
+
   useInterval(() => {
-    setTime(time + 1);
-    if(time > 300){
+    setTimeLimit(timeLimit - 1);
+    if(timeLimit <= 0){
       history.push({
         pathname: "/end",
         state: { url: createImageData() }
@@ -20,8 +23,12 @@ const Timer = ({createImageData}) =>{
 
 
   return(
-    <Box>
-    </Box>
+    <React.Fragment>
+      <ScheduleIcon fontSize="small"/>
+      <Typography>
+        {timeLimit}
+      </Typography>
+    </React.Fragment>
   )
 
 };
