@@ -20,7 +20,7 @@ const RouteManager = () => {
         timeout={200}
       >
         <div className={"page"}>
-          <Switch>
+          <Switch location={location}>
             <Route exact path="/" children={<StartPage />} />
             <Route path="/play" children={<KonvaTest/>} />
             <Route path="/end" children={<EndPage />} />
