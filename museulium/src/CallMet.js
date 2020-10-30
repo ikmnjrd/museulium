@@ -1,23 +1,17 @@
 import React from 'react';
-import Modal from 'react-modal';
-import Backdrop from '@material-ui/core/Backdrop';
+import Modal from '@material-ui/core/Modal';
 
 const met_json = require('./metId.json');
 const metObjs = met_json.metObjIds;
 
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
+function getModalStyle() {
+  return {
+    top: `50%`,
+    left: `50%`,
+    transform: 'translate(0%, 25%)'
+  };
+}
 
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root')
 
 function CallMet() {
   // API part
@@ -26,7 +20,8 @@ function CallMet() {
   const [items, setItems] = React.useState([]);
 
   // Modal part
-  const [modalIsOpen,setIsOpen] = React.useState(false);
+  const [modalStyle] = React.useState(getModalStyle);
+  const [open, setOpen] = React.useState(false);
 
   // API part
   // Note: the empty deps array [] means
@@ -52,19 +47,15 @@ function CallMet() {
       )
   }, [])
 
-  // Modal part
-  function openModal() {
-    setIsOpen(true);
-  }
+  //Modal part
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-  function closeModal(){
-    setIsOpen(false);
-  }
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -73,19 +64,21 @@ function CallMet() {
   } else {
     return (
       <React.Fragment>
-        <img src={items.primaryImage} onClick={openModal} alt="met_pic" width="100px" height="100px" />
+      <img src={items.primaryImage} onClick={handleOpen} alt="met_pic" width="100px" height="100px" />
 
         <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Odaimoku-Modal"
+          open={open}
+          onClose={handleClose}
         >
-          {/* <h2 ref={_subtitle => (subtitle = _subtitle)}>お題</h2> */}
-          <img src={items.primaryImage} alt="met_pic" width={window.innerWidth} height={window.innerHeight *0.6} />
+          <img 
+            src={items.primaryImage} 
+            alt="met_pic" 
+            width={window.innerWidth} 
+            height={window.innerHeight *0.6}
+            style={modalStyle}
+            
+          />
         </Modal>
-
       </React.Fragment>  
     );
   }

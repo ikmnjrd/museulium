@@ -1,18 +1,18 @@
 .page {
   position: absolute;
-  background-color: #fff ;
   width:100%;
+  height: 100%;
 }
 
 .pageTransition-enter {
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateY(100%);
 }
 .pageTransition-enter-active {
   z-index: 2;
-  transition: opacity 100ms ease-out, transform 200ms ease-out;
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
   opacity: 1;
-  transform: translateX(0px);
+  transform: translateY(0px);
 }
 .pageTransition-exit-active {
   z-index: 1;

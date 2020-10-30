@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'primary',
   },
   selectLabel: {
-    color: '#424242',
+    color: 'white',
   },
 }));
 
