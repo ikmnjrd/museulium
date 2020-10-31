@@ -4,7 +4,6 @@
 web内にて<br>
 cdでsrcのあるディレクトリに移動<br>
 `npm install react-scripts`<br>
-`npm install react-modal`<br>
 `npm install @material-ui/core`<br>
 ~npm install fontsource-roboto~ <br>
 `npm install @material-ui/icons`<br>
