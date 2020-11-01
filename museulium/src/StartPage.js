@@ -27,8 +27,12 @@ const StartPage = () =>{
               <Grid item>
                 <Typography variant="h2">Museulium</Typography>
               </Grid>
-              <Grid item> 
-                <Typography variant="h6">You have to draw within the time limit.</Typography>                        
+              <Grid item>
+                <Typography variant="h6">
+                  <Box fontStyle="italic" >
+                    You have to draw within the time limit.
+                  </Box>
+                </Typography>
               </Grid>
             </Grid>
           </Box>
