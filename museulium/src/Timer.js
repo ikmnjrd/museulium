@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {useHistory} from "react-router-dom";
-import Box from '@material-ui/core/Box';
 import useInterval from 'use-interval';
 import { Typography } from '@material-ui/core';
 import ScheduleIcon from '@material-ui/icons/Schedule';

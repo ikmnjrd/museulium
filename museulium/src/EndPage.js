@@ -7,7 +7,7 @@ const EndPage = () =>{
   return(
     <Box>
       Time is up. 
-      <img src={location.state.url}></img>
+      <img src={location.state.url} alt="drawing-result"></img>
     </Box>
   )
 };
