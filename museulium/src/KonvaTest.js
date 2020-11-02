@@ -181,6 +181,7 @@ const KonvaTest = () => {
           <DialMenu
               clearCanvas={clearCanvas}
               handleNoSwipe={handleNoSwipe}
+              createImageData={createImageData}
           />
           <Timer createImageData={createImageData}/>
 
