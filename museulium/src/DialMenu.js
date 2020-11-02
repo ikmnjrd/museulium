@@ -5,12 +5,13 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
 import Backdrop from '@material-ui/core/Backdrop';
-import Typography from '@material-ui/core/Typography';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import DeleteIcon from '@material-ui/icons/Delete';
 import GestureIcon from '@material-ui/icons/Gesture';
+import PublishIcon from '@material-ui/icons/Publish';
 import { makeStyles } from '@material-ui/core/styles';
-
+import {useHistory} from "react-router-dom";
 
 
 const useStyles = makeStyles({
@@ -23,10 +24,11 @@ const useStyles = makeStyles({
 });
 
 
-const DialMenu = ({clearCanvas,handleNoSwipe}) => {
+const DialMenu = ({clearCanvas,handleNoSwipe, createImageData}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [manageSwipe, setManageSwipe] = React.useState(true);
+  let history = useHistory();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -41,12 +43,20 @@ const DialMenu = ({clearCanvas,handleNoSwipe}) => {
     setManageSwipe(!manageSwipe);
     setAnchorEl(null);
   }
+
   const handleMennuClear =() =>{
     clearCanvas();
     setAnchorEl(null);
   }
-  const classes = useStyles();
 
+  const submitFinish =() => {
+    history.push({
+      pathname: "/end",
+      state: { url: createImageData() }
+    });
+  }
+
+  const classes = useStyles();
 
   return (
     <React.Fragment>
@@ -75,15 +85,27 @@ const DialMenu = ({clearCanvas,handleNoSwipe}) => {
             <ListItemIcon className={classes.icon}>
               <DeleteIcon fontSize="small" />
             </ListItemIcon>
-            <Typography variant="inherit">Clear Canvas</Typography>
+            <ListItemText primary="Clear Canvas" />
           </MenuItem>
+
           <Divider />
+          
           <MenuItem onClick={handleMennuNoSwipe}>
             <ListItemIcon>
               <GestureIcon fontSize="small" />
             </ListItemIcon>
-            <Typography variant="inherit">{manageSwipe ? "enable Swipe": "disable Swipe"}</Typography>
+            <ListItemText >{manageSwipe ? "Enable Swipe": "Disable Swipe"}</ListItemText>
           </MenuItem>
+
+          <Divider />
+
+          <MenuItem onClick={submitFinish}>
+            <ListItemIcon>
+              <PublishIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText primary="Submit to finish" />
+          </MenuItem>
+
         </Menu>
       </Backdrop>
     </React.Fragment>
