@@ -12,6 +12,9 @@ import Button from '@material-ui/core/Button';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
 
+const met_json = require('./metId.json');
+const metObjs = met_json.metObjIds;
+let historyStep = 0;
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-let historyStep = 0;
 
 const KonvaTest = () => {
   const [tool, setTool] = React.useState('pen');
@@ -44,6 +46,8 @@ const KonvaTest = () => {
   const [linesCopy, setLinesCopy] = React.useState([]);
   const isDrawing = React.useRef(false);
   const [noSwipeFlag,setNoSwipeFlag] = React.useState(true);
+
+  const [metObj, setMetObj] =React.useState(metObjs[Math.floor( Math.random() * metObjs.length)]);
 
   const stageRef = React.useRef();
   const classes = useStyles();
@@ -173,7 +177,7 @@ const KonvaTest = () => {
           </Button>
 
           <Fab className={classes.fabButton}>
-            <CallMet />
+            <CallMet metObj={metObj}/>
           </Fab>
 
         </Toolbar>
@@ -182,8 +186,12 @@ const KonvaTest = () => {
               clearCanvas={clearCanvas}
               handleNoSwipe={handleNoSwipe}
               createImageData={createImageData}
+              metObj={metObj}
           />
-          <Timer createImageData={createImageData}/>
+          <Timer 
+            createImageData={createImageData}
+            metObj={metObj}
+          />
 
           <Tools
             setToolChild={setToolChild}

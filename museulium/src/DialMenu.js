@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 
-const DialMenu = ({clearCanvas,handleNoSwipe, createImageData}) => {
+const DialMenu = ({clearCanvas,handleNoSwipe, createImageData, metObj}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [manageSwipe, setManageSwipe] = React.useState(true);
@@ -52,7 +52,7 @@ const DialMenu = ({clearCanvas,handleNoSwipe, createImageData}) => {
   const submitFinish =() => {
     history.push({
       pathname: "/end",
-      state: { url: createImageData() }
+      state: { url: createImageData(), metObjID: metObj }
     });
   }
 

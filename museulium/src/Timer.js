@@ -5,7 +5,7 @@ import { Typography } from '@material-ui/core';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 
 
-const Timer = ({createImageData}) =>{
+const Timer = ({createImageData,metObj}) =>{
   // timeLimit = x(seconds)
   const [timeLimit, setTimeLimit] = useState(300);
   let history = useHistory();
@@ -15,7 +15,7 @@ const Timer = ({createImageData}) =>{
     if(timeLimit <= 0){
       history.push({
         pathname: "/end",
-        state: { url: createImageData() }
+        state: { url: createImageData(), metObjID: metObj }
       });
     }
   }, 1000);
