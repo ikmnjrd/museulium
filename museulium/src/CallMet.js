@@ -49,8 +49,13 @@ const CallMet = ({metObj}) => {
   } else {
     return (
       <React.Fragment>
-      <img src={items.primaryImage} onClick={handleOpen} alt="met_pic" width="100px" height="100px" />
-
+        <img 
+          src={items.primaryImage}
+          onClick={handleOpen}
+          alt="met_pic"
+          width="100px"
+          height="100px"
+        />
         <Modal
           open={open}
           onClose={handleClose}
@@ -61,7 +66,6 @@ const CallMet = ({metObj}) => {
             width={window.innerWidth} 
             height={window.innerHeight *0.6}
             style={modalStyle}
-            
           />
         </Modal>
       </React.Fragment>  

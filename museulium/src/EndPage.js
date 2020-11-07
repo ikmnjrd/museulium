@@ -2,11 +2,11 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import {useLocation} from "react-router-dom";
 import {makeStyles} from '@material-ui/core/styles';
-import CallMet from './CallMet';
+import CallMetText from './CallMetText';
 
 const useStyles = makeStyles((theme) => ({
-  paintingResult: {
-    margin: 12,
+  subject: {
+    padding: 6,
   },
 }));
 
@@ -16,14 +16,26 @@ const EndPage = () =>{
 
   return(
     <Box>
-      <img 
-        src={location.state.url}
-        alt="drawing-result"
-        width={window.innerWidth *0.5}
-        height={window.innerHeight *0.5}
-        border="2"
-      />
-      <CallMet metObj={location.state.metObjID}/>
+      <Box 
+        display="flex"
+        justifyContent="center"
+        bgcolor="text.disabled"
+        className={classes.paintingResult}
+      >
+        <Box 
+        >
+          <img 
+            src={location.state.url}
+            alt="drawing-result"
+            width={window.innerWidth *0.5}
+            height={window.innerHeight *0.5}
+          />
+        </Box>
+      </Box>
+
+      <Box className={classes.subject}>
+        <CallMetText metObj={location.state.metObjID}/>
+      </Box>
     </Box>
   )
 };

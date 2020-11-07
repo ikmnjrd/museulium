@@ -1,4 +1,5 @@
 import React from 'react';
+import Konva from 'konva';
 import { Stage, Layer, Line} from 'react-konva';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -47,7 +48,7 @@ const KonvaTest = () => {
   const isDrawing = React.useRef(false);
   const [noSwipeFlag,setNoSwipeFlag] = React.useState(true);
 
-  const [metObj, setMetObj] =React.useState(metObjs[Math.floor( Math.random() * metObjs.length)]);
+  const [metObj] =React.useState(metObjs[Math.floor( Math.random() * metObjs.length)]);
 
   const stageRef = React.useRef();
   const classes = useStyles();
@@ -125,7 +126,12 @@ const KonvaTest = () => {
   }
 
   const createImageData = () => {
-    return stageRef.current.toDataURL();
+    stageRef.current.children[0].children.unshift(new Konva.Rect({
+      width: window.innerWidth * 0.98,
+      height: window.innerHeight *0.8,
+      fill: 'white'
+    }));
+    return stageRef.current.toDataURL({mimeType: "image/jpeg"});
   }
 
   return (
