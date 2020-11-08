@@ -10,6 +10,7 @@ cdでsrcのあるディレクトリに移動<br>
 `npm install react-router-dom`<br>
 `npm install use-interval`<br>
 `npm install react-transition-group`<br>
+`npm install react-share`<br>
 
 退出<br>
 `docker-compose up -d`<br>
