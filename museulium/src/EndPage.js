@@ -3,11 +3,18 @@ import Box from '@material-ui/core/Box';
 import {useLocation} from "react-router-dom";
 import {makeStyles} from '@material-ui/core/styles';
 import CallMetText from './CallMetText';
+import SocialShare from './SocialShare';
+import { FormHelperText, TextareaAutosize } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   subject: {
     padding: 6,
   },
+  shareButton: {
+    position: "absolute",
+    float: "right",
+    right: 20,
+  }
 }));
 
 const EndPage = () =>{
@@ -16,6 +23,11 @@ const EndPage = () =>{
 
   return(
     <Box>
+      <Box className={classes.shareButton}>
+        <SocialShare 
+          image={location.state.url}
+        />
+      </Box>
       <Box 
         display="flex"
         justifyContent="center"
@@ -32,6 +44,8 @@ const EndPage = () =>{
           />
         </Box>
       </Box>
+
+      
 
       <Box className={classes.subject}>
         <CallMetText metObj={location.state.metObjID}/>
