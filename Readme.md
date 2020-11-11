@@ -8,6 +8,7 @@ cdでsrcのあるディレクトリに移動<br>
 `npm install @material-ui/core`<br>
 ~npm install fontsource-roboto~ <br>
 `npm install @material-ui/icons`<br>
+`npm install react-color`<br>
 
 退出<br>
 `docker-compose up -d`<br>

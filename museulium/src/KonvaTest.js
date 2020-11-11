@@ -11,6 +11,8 @@ import Tools from './Tools';
 import Button from '@material-ui/core/Button';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
+import ColorLensIcon from '@material-ui/icons/ColorLens';
+import ColorPicker from './ColorPicker';
 
 
 
@@ -52,15 +54,15 @@ const KonvaTest = () => {
   const [linesCopy, setLinesCopy] = React.useState([]);
   const isDrawing = React.useRef(false);
   const [noSwipeFlag,setNoSwipeFlag] = React.useState(true);
-
   const stageRef = React.useRef();
   const classes = useStyles();
+  const [flag, setFlag] = React.useState(false);
+  const [color, setColor] = React.useState('#000000');
   
-
   const handleMouseDown = (e) => {
     isDrawing.current = true;
     const pos = e.target.getStage().getPointerPosition();
-    setLines([...lines, { tool, points: [pos.x, pos.y] }]);
+    setLines([...lines, { tool, points: [pos.x, pos.y], color }]);
     
     if(noSwipeFlag === true){
       e.evt.preventDefault();
@@ -106,7 +108,8 @@ const KonvaTest = () => {
   const setToolChild = (value) =>{
     setTool(value);
   }
-  const getToolChild =() =>{
+
+  const getToolChild = () =>{
     return {tool: tool};
   }
 
@@ -128,8 +131,22 @@ const KonvaTest = () => {
     historyStep += 1;
   }
 
+  const openPalette = () => {
+    setFlag(!flag);
+  }
+
+  const setLineStroke = (colorValue) => {
+    setColor(colorValue);
+  }
+
+
   return (
     <React.Fragment>
+      <ColorPicker
+        flag={flag}
+        color={color}
+        setLineStroke={setLineStroke}
+      />
       <Stage
         width={window.innerWidth * 0.98}
         height={window.innerHeight *0.9}
@@ -143,12 +160,11 @@ const KonvaTest = () => {
       >
         <Layer>
           <Text text="Just start drawing" x={5} y={30} />
-
           {lines.map((line, i) => (
             <Line
               key={i}
               points={line.points}
-              stroke="#df4b26"
+              stroke={line.color}
               strokeWidth={5}
               tension={0.5}
               lineCap="round"
@@ -180,15 +196,18 @@ const KonvaTest = () => {
             <RedoIcon />
           </Button>
 
+          <Button onClick={openPalette}>
+            <ColorLensIcon />
+          </Button>
+
           <Tools
             setToolChild={setToolChild}
             getToolChild={getToolChild}
           />
 
         </Toolbar>
-      </AppBar>
+    </AppBar>
     </React.Fragment>
-
   );
 };
 
