@@ -15,14 +15,3 @@ code {
 .konvajs-content {
   border: solid 0.2rem black;
 }
-
-
-.inline-block_test {
-  display: inline-block;      /* インラインブロック要素にする */    /* 背景色指定 */
-  padding: 10px;              /* 余白指定 */
-  margin-top: 1rem;
-}
-
-.right {
-  float: right;
-}
