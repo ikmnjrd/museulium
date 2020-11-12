@@ -51,7 +51,7 @@ const KonvaTest = () => {
   const [noSwipeFlag,setNoSwipeFlag] = React.useState(true);
   const stageRef = React.useRef();
   const classes = useStyles();
-  const [flag, setFlag] = React.useState(false);
+  const [canChangeColor, setCanChangeColor] = React.useState(false);
   const [color, setColor] = React.useState('#000000');
   const [metObj] =React.useState(metObjs[Math.floor( Math.random() * metObjs.length)]);
 
@@ -129,7 +129,7 @@ const KonvaTest = () => {
   }
 
   const openPalette = () => {
-    setFlag(!flag);
+    setCanChangeColor(!canChangeColor);
   }
 
   const setLineStroke = (colorValue) => {
@@ -149,7 +149,7 @@ const KonvaTest = () => {
   return (
     <React.Fragment>
       <ColorPicker
-        flag={flag}
+        canChangeColor={canChangeColor}
         color={color}
         setLineStroke={setLineStroke}
       />
@@ -225,7 +225,7 @@ const KonvaTest = () => {
             getToolChild={getToolChild}
           />
         </Toolbar>
-    </AppBar>
+      </AppBar>
     </React.Fragment>
   );
 };
