@@ -17,21 +17,21 @@ const SocialShare = (props) =>{
     <React.Fragment>
       <ul>
         <TwitterShareButton 
-          url="https://museulium-cb08f.web.app/"
+          url="https://museulium.com/"
         >
           <TwitterIcon size="32" round/>
         </TwitterShareButton>
       </ul>
       <ul>
         <FacebookShareButton 
-          url="https://museulium-cb08f.web.app/"
+          url="https://museulium.com/"
         >
           <FacebookIcon size="32" round/>
         </FacebookShareButton>
       </ul>
       <ul>
         <LineShareButton 
-          url="https://museulium-cb08f.web.app/"
+          url="https://museulium.com/"
         >
           <LineIcon size="32" round/>
         </LineShareButton>
