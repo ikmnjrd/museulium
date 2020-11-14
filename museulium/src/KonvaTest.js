@@ -169,13 +169,10 @@ const KonvaTest = () => {
             <Line
               key={i}
               points={line.points}
-              stroke={line.color}
+              stroke={line.tool === 'eraser' ? '#FFFFFF' : line.color}
               strokeWidth={5}
               tension={0.5}
               lineCap="round"
-              globalCompositeOperation={
-                line.tool === 'eraser' ? 'destination-out' : 'source-over'
-              }
             />
           ))}
         </Layer>
