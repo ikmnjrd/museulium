@@ -12,6 +12,7 @@ import GestureIcon from '@material-ui/icons/Gesture';
 import PublishIcon from '@material-ui/icons/Publish';
 import { makeStyles } from '@material-ui/core/styles';
 import {useHistory} from "react-router-dom";
+import firebase from './firebase'
 
 
 const useStyles = makeStyles({
@@ -29,6 +30,8 @@ const DialMenu = ({clearCanvas,handleNoSwipe, createImageData, metObj}) => {
   const open = Boolean(anchorEl);
   const [manageSwipe, setManageSwipe] = React.useState(true);
   let history = useHistory();
+
+  const pieceRef = firebase.database().ref('p');
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -50,8 +53,17 @@ const DialMenu = ({clearCanvas,handleNoSwipe, createImageData, metObj}) => {
   }
 
   const submitFinish =() => {
+    const newPieceRef = pieceRef.push();
+    let pieceId = "";
+    newPieceRef.set({
+      piece: createImageData(),
+      metObjID: metObj
+    });
+    pieceRef.orderByKey().on('child_added', (snapshot) => {
+      pieceId = snapshot.key;
+    });
     history.push({
-      pathname: "/end",
+      pathname: "/p/"+pieceId,
       state: { url: createImageData(), metObjID: metObj }
     });
   }

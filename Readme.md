@@ -12,6 +12,7 @@ cdでsrcのあるディレクトリに移動<br>
 `npm install use-interval`<br>
 `npm install react-transition-group`<br>
 `npm install react-share`<br>
+`npm install firebase`
 
 退出<br>
 `docker-compose up -d`<br>
