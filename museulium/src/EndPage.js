@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import Box from '@material-ui/core/Box';
-import {useLocation, useParams} from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import {Link, useLocation, useParams} from "react-router-dom";
 import {makeStyles} from '@material-ui/core/styles';
 import CallMetText from './CallMetText';
 import SocialShare from './SocialShare';
@@ -91,6 +92,16 @@ const EndPage = () =>{
         <Box className={classes.subject}>
           <CallMetText metObj={location.state.metObjID}/>
         </Box>
+        <Box
+            display="flex"
+            justifyContent="center"
+          > 
+            <Link to="/play" >
+              <Button variant="contained" color="primary">
+                Play again
+              </Button>
+            </Link>
+          </Box>
       </Box>
     )
   }
