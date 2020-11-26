@@ -5,8 +5,6 @@ import {
   FacebookIcon,
   LineShareButton,
   LineIcon,
-  PinterestShareButton,
-  PinterestIcon,
   TwitterShareButton,
   TwitterIcon,
 } from "react-share";
