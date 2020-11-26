@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   selectButton: {
     margin: 0,
     left: 'auto',
-    right: 20,
+    right: 10,
     position: 'fixed',
     backgroundColor: 'primary',
   },

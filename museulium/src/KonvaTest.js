@@ -37,6 +37,12 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 32,
     padding: 12,
   },
+  ColorButton: {
+    margin: 0,
+    left: 'auto',
+    right: 80,
+    position: 'fixed',
+  },
   sedondToolbar: {
     backgroundColor: "#5c6bc0",
   },
@@ -148,11 +154,6 @@ const KonvaTest = () => {
 
   return (
     <React.Fragment>
-      <ColorPicker
-        canChangeColor={canChangeColor}
-        color={color}
-        setLineStroke={setLineStroke}
-      />
       <Stage
         width={window.innerWidth * 0.98}
         height={window.innerHeight *0.8}
@@ -177,6 +178,12 @@ const KonvaTest = () => {
           ))}
         </Layer>
       </Stage>
+      <ColorPicker
+            canChangeColor={canChangeColor}
+            color={color}
+            setLineStroke={setLineStroke}
+          />
+      
 
       <AppBar position="fixed" color="primary"  className={classes.appBar}>
         <Toolbar className={classes.sedondToolbar}>
@@ -196,6 +203,8 @@ const KonvaTest = () => {
             <RedoIcon />
           </Button>
 
+
+
           <Fab className={classes.fabButton}>
             <CallMet metObj={metObj}/>
           </Fab>
@@ -213,7 +222,11 @@ const KonvaTest = () => {
             metObj={metObj}
           />
 
-          <Button onClick={openPalette}>
+          <Button 
+            onClick={openPalette}
+            color="inherit"
+            className={classes.ColorButton}
+          >
             <ColorLensIcon />
           </Button>
 
