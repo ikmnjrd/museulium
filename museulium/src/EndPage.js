@@ -19,12 +19,16 @@ const useStyles = makeStyles(() => ({
 }));
 
 const getPieceFirebase = async (id) =>{
-  return firebase.database().ref('/p/'+id).once('value').then(function(snapshot) {
+  return await firebase.database().ref('/p/'+id).once('value').then(async (snapshot) => {
     return {
-      url: snapshot.child("piece").val(), 
+      url:  await getStorageItem(snapshot.child("piece").val()), 
       metObjID: snapshot.child("metObjID").val()
     };
   });
+}
+
+const getStorageItem = async (id) =>{
+  return await firebase.storage().ref('p/'+id+'.jpg').getDownloadURL();
 }
 
 const checkLocationValue = async (locState) =>{
