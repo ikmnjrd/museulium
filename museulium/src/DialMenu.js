@@ -13,6 +13,7 @@ import PublishIcon from '@material-ui/icons/Publish';
 import { makeStyles } from '@material-ui/core/styles';
 import {useHistory} from "react-router-dom";
 import firebase from './firebase'
+import { v4 as uuidv4 } from 'uuid';
 
 
 const useStyles = makeStyles({
@@ -24,14 +25,26 @@ const useStyles = makeStyles({
   }
 });
 
+const pushFirebase = async (piece,metObj) => {
+  const pieceRef = firebase.database().ref('p');
+  const newPieceRef = pieceRef.push();
+
+  newPieceRef.set({
+    piece: piece,
+    metObjID: metObj
+  });
+
+  return pieceRef.orderByKey().on('child_added', (snapshot) => {
+    return snapshot.key;
+  });
+}
+
 
 const DialMenu = ({clearCanvas,handleNoSwipe, createImageData, metObj}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [manageSwipe, setManageSwipe] = React.useState(true);
   let history = useHistory();
-
-  const pieceRef = firebase.database().ref('p');
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -53,19 +66,20 @@ const DialMenu = ({clearCanvas,handleNoSwipe, createImageData, metObj}) => {
   }
 
   const submitFinish =() => {
-    const newPieceRef = pieceRef.push();
-    let pieceId = "";
-    newPieceRef.set({
-      piece: createImageData(),
-      metObjID: metObj
+    const uuid = uuidv4();
+    const img = createImageData();
+    const storageRef = firebase.storage().ref();
+    const storageChildRef = storageRef.child('p/' + uuid + '.jpg');
+
+    storageChildRef.putString(img, 'data_url').then((snapshot) => {
+      return pushFirebase(uuid, metObj);
+    }).then((id) => {
+      history.push({
+        pathname: "/p/"+id,
+        state: { url: img, metObjID: metObj }
+      });
     });
-    pieceRef.orderByKey().on('child_added', (snapshot) => {
-      pieceId = snapshot.key;
-    });
-    history.push({
-      pathname: "/p/"+pieceId,
-      state: { url: createImageData(), metObjID: metObj }
-    });
+    
   }
 
   const classes = useStyles();

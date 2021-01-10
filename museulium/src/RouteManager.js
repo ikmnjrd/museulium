@@ -24,6 +24,7 @@ const RouteManager = () => {
             <Route exact path="/" children={<StartPage />} />
             <Route path="/play" children={<KonvaTest/>} />
             <Route path="/p/:id" children={<EndPage />} />
+            <Route path="/_p/:id" children={<EndPage />} />
             <Route children={<NoMatch />} />
           </Switch>
         </div>
