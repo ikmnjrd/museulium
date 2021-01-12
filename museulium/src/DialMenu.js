@@ -28,15 +28,30 @@ const useStyles = makeStyles({
 const pushFirebase = async (piece,metObj) => {
   const pieceRef = firebase.database().ref('p');
   const newPieceRef = pieceRef.push();
+  let pieceId = "";
 
   newPieceRef.set({
     piece: piece,
     metObjID: metObj
   });
 
-  return pieceRef.orderByKey().on('child_added', (snapshot) => {
-    return snapshot.key;
+  pieceRef.orderByKey().on('child_added', (snapshot) => {
+    pieceId = snapshot.key;
   });
+
+  return pieceId;
+}
+
+const pushCloudStorage = async (piece,metObj) => {
+  const uuid = uuidv4();
+  const storageRef = firebase.storage().ref();
+  const pieceRef = storageRef.child('p/' + uuid + '.jpg');
+
+  const pieceId = await pieceRef.putString(piece, 'data_url').then((snapshot) => {
+    return pushFirebase(uuid, metObj);
+  });
+
+  return pieceId;
 }
 
 
@@ -66,17 +81,13 @@ const DialMenu = ({clearCanvas,handleNoSwipe, createImageData, metObj}) => {
   }
 
   const submitFinish =() => {
-    const uuid = uuidv4();
-    const img = createImageData();
-    const storageRef = firebase.storage().ref();
-    const storageChildRef = storageRef.child('p/' + uuid + '.jpg');
+    const img_data = createImageData();
 
-    storageChildRef.putString(img, 'data_url').then((snapshot) => {
-      return pushFirebase(uuid, metObj);
-    }).then((id) => {
+
+    pushCloudStorage(img_data, metObj).then((pieceid) => {
       history.push({
-        pathname: "/p/"+id,
-        state: { url: img, metObjID: metObj }
+        pathname: "/p/"+pieceid,
+        state: { url: img_data, metObjID: metObj }
       });
     });
     
