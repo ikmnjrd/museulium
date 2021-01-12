@@ -15,9 +15,14 @@ import RedoIcon from '@material-ui/icons/Redo';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
 import ColorPicker from './ColorPicker';
 
+import './stylesheets/main.css';
+
 const met_json = require('./metId.json');
 const metObjs = met_json.metObjIds;
 let historyStep = 0;
+
+const WIDTH = window.innerWidth > 552 ?  552 : window.innerWidth -6;
+const HEIGHT = window.innerHeight -112 -6;
 
 
 const useStyles = makeStyles((theme) => ({
@@ -28,20 +33,20 @@ const useStyles = makeStyles((theme) => ({
   fabButton: {
     position: 'absolute',
     zIndex: 1,
-    top: 30,
+    top: 'auto',
+    bottom: 0,
     left: 0,
     right: 0,
-    margin: '0 auto',
   },
   historyButton: {
     minWidth: 32,
     padding: 12,
   },
   ColorButton: {
-    margin: 0,
-    left: 'auto',
-    right: 80,
-    position: 'fixed',
+    // margin: 0,
+    // left: 'auto',
+    // right: 80,
+    // position: 'fixed',
   },
   sedondToolbar: {
     backgroundColor: "#5c6bc0",
@@ -145,8 +150,8 @@ const KonvaTest = () => {
 
   const createImageData = () => {
     stageRef.current.children[0].children.unshift(new Konva.Rect({
-      width: window.innerWidth * 0.98,
-      height: window.innerHeight *0.8,
+      width: WIDTH,
+      height: HEIGHT,
       fill: 'white'
     }));
     return stageRef.current.toDataURL({mimeType: "image/jpeg"});
@@ -155,8 +160,8 @@ const KonvaTest = () => {
   return (
     <React.Fragment>
       <Stage
-        width={window.innerWidth * 0.98}
-        height={window.innerHeight *0.8}
+        width={WIDTH}
+        height={HEIGHT}
         onMouseDown={handleMouseDown}
         onMousemove={handleMouseMove}
         onMouseup={handleMouseUp}
@@ -179,63 +184,53 @@ const KonvaTest = () => {
         </Layer>
       </Stage>
       <ColorPicker
-            canChangeColor={canChangeColor}
-            color={color}
-            setLineStroke={setLineStroke}
-          />
+        canChangeColor={canChangeColor}
+        color={color}
+        setLineStroke={setLineStroke}
+      />
       
+      
+      <div className="bottom-menu">
+            <Button 
+              onClick ={handleUndo}
+              className={classes.historyButton}
+            >
+              <UndoIcon style={{color: 'white'}}/>
+            </Button>
 
-      <AppBar position="fixed" color="primary"  className={classes.appBar}>
-        <Toolbar className={classes.sedondToolbar}>
-          <Button 
-            onClick ={handleUndo}
-            color="inherit"
-            className={classes.historyButton}
-          >
-            <UndoIcon />
-          </Button>
+            <Button 
+              onClick={handleRedo}
+              color="inherit"
+              className={classes.historyButton}
+            >
+              <RedoIcon style={{color: 'white'}}/>
+            </Button>
+            
+            <Button 
+              onClick={openPalette}
+              className={classes.ColorButton}
+              style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+            >
+              <ColorLensIcon style={{color: 'white'}} />
+            </Button>
 
-          <Button 
-            onClick={handleRedo}
-            color="inherit"
-            className={classes.historyButton}
-          >
-            <RedoIcon />
-          </Button>
+            <div style={window.innerWidth > 552 ? {position: 'absolute', left: 442} : {position: 'absolute', right: 0}}>
+              <CallMet metObj={metObj} />
+            </div>
+      </div>
 
-
-
-          <Fab className={classes.fabButton}>
-            <CallMet metObj={metObj}/>
-          </Fab>
-
-        </Toolbar>
-        <Toolbar>
+      <div className="bottom-menu-2">
           <DialMenu
-              clearCanvas={clearCanvas}
-              handleNoSwipe={handleNoSwipe}
-              createImageData={createImageData}
-              metObj={metObj}
+            clearCanvas={clearCanvas}
+            handleNoSwipe={handleNoSwipe}
+            createImageData={createImageData}
+            metObj={metObj}
           />
           <Timer 
             createImageData={createImageData}
             metObj={metObj}
           />
-
-          <Button 
-            onClick={openPalette}
-            color="inherit"
-            className={classes.ColorButton}
-          >
-            <ColorLensIcon />
-          </Button>
-
-          <Tools
-            setToolChild={setToolChild}
-            getToolChild={getToolChild}
-          />
-        </Toolbar>
-      </AppBar>
+        </div>
     </React.Fragment>
   );
 };

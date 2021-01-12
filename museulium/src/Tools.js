@@ -19,10 +19,10 @@ const custom_theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   selectButton: {
-    margin: 0,
-    left: 'auto',
-    right: 10,
-    position: 'fixed',
+    // margin: 0,
+    // left: 'auto',
+    // right: 10,
+    // position: 'fixed',
     backgroundColor: 'primary',
   },
   selectLabel: {

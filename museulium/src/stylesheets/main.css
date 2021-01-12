@@ -1,0 +1,17 @@
+.bottom-menu {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 54px;
+  width: 100%;
+  /* top: auto;
+  bottom: 0; */
+  background-color: #3f51b5;
+}
+
+.bottom-menu-2 {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  height: 54px;
+  background-color: #162992;
+}

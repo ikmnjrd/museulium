@@ -90,7 +90,7 @@ const DialMenu = ({clearCanvas,handleNoSwipe, createImageData, metObj}) => {
         onClick={handleMenu}
         color="inherit"
       >
-        <MenuIcon />
+        <MenuIcon style={{color: 'white'}} />
       </IconButton>
       <Backdrop open={open} className={classes.backdrop}>
         <Menu
@@ -105,6 +105,7 @@ const DialMenu = ({clearCanvas,handleNoSwipe, createImageData, metObj}) => {
             vertical: "bottom",
             horizontal: "left"
           }}
+          style={{zIndex: 3000}}
         >
           
           <MenuItem onClick={handleMennuClear}>

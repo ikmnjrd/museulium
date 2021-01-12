@@ -6,6 +6,7 @@ import EndPage from './EndPage';
 import NoMatch from './NoMatch';
 import {Route, Switch, useLocation} from "react-router-dom";
 import {TransitionGroup ,CSSTransition } from "react-transition-group";
+import Container from '@material-ui/core/Container';
 
 
 
@@ -19,7 +20,7 @@ const RouteManager = () => {
         classNames={"pageTransition"} 
         timeout={200}
       >
-        <div className={"page"}>
+        <Container className={"page"} maxWidth="sm" fixed style={{padding: 0}}>
           <Switch location={location}>
             <Route exact path="/" children={<StartPage />} />
             <Route path="/play" children={<KonvaTest/>} />
@@ -27,7 +28,7 @@ const RouteManager = () => {
             <Route path="/_p/:id" children={<EndPage />} />
             <Route children={<NoMatch />} />
           </Switch>
-        </div>
+        </Container>
       </CSSTransition>
     </TransitionGroup>
   )
