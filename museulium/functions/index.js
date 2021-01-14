@@ -21,7 +21,7 @@ const db = admin.database();
 const app_domain = "museulium.com";
 
 const OGP_IMG_WIDTH = 600;
-const OGP_IMG_HEIGHT = 315;
+const OGP_IMG_HEIGHT = 300;
 const OGP_IMG_ARTWORK_WIDTH = OGP_IMG_WIDTH * 0.5;
 
 exports.funcOGP = functions.https.onRequest((req, res) => {
@@ -49,16 +49,15 @@ exports.funcOGP = functions.https.onRequest((req, res) => {
 const createHtml = (pieceId, piece) => {
   const SITEURL = `https://${app_domain}`
   const PAGEURL = `${SITEURL}/p/${pieceId}`
-  // エスケープ処理はいらない（unameなんて気にしない{そもそもそんなのない}）
-  const TITLE = `この絵の元となった有名絵画はなんでしょう？`
-  const DESCRIPTION = '有名絵画の模写にチャレンジしてみよう！'
+  const TITLE = `What is this picture a copy of？`
+  const DESCRIPTION = 'This website is a game to help you improve your painting skills and to copy famous paintings in time.'
 
   return `<!DOCTYPE html>
     <html>
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <title>colorinco</title>
+        <title>Museulium</title>
         <meta property="og:title" content="${TITLE}">
         <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/museulium-cb08f.appspot.com/o/p%2F${piece}.jpg?alt=media">
         <meta property="og:image:width" content="${OGP_IMG_WIDTH}">

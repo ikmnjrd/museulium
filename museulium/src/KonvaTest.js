@@ -22,7 +22,7 @@ const metObjs = met_json.metObjIds;
 let historyStep = 0;
 
 const WIDTH = window.innerWidth > 600 ?  600 -6 : window.innerWidth -6;
-const HEIGHT = window.innerHeight -112 -6;
+const HEIGHT = window.innerHeight -112 -2;
 
 
 const useStyles = makeStyles((theme) => ({
@@ -65,6 +65,8 @@ const KonvaTest = () => {
   const [canChangeColor, setCanChangeColor] = React.useState(false);
   const [color, setColor] = React.useState('#000000');
   const [metObj] =React.useState(metObjs[Math.floor( Math.random() * metObjs.length)]);
+
+  const [clickPosition, setClickPosition] = React.useState({x: 0, x: 0});
 
 
   const handleMouseDown = (e) => {
@@ -139,7 +141,12 @@ const KonvaTest = () => {
     historyStep += 1;
   }
 
-  const openPalette = () => {
+  const handlePalette = (e) => {
+    if(e){
+      setClickPosition({x: e.pageX, y: e.pageY});
+    }
+    
+
     setCanChangeColor(!canChangeColor);
   }
 
@@ -187,6 +194,8 @@ const KonvaTest = () => {
         canChangeColor={canChangeColor}
         color={color}
         setLineStroke={setLineStroke}
+        handlePalette={handlePalette}
+        position={clickPosition}
       />
       
       
@@ -207,7 +216,7 @@ const KonvaTest = () => {
             </Button>
             
             <Button 
-              onClick={openPalette}
+              onClick={handlePalette}
               className={classes.ColorButton}
               style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
             >
