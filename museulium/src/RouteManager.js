@@ -18,9 +18,9 @@ const RouteManager = () => {
       <CSSTransition 
         key={location.key}
         classNames={"pageTransition"} 
-        timeout={200}
+        timeout={300}
       >
-        <Container className={"page"} maxWidth="sm" fixed style={{padding: 0}}>
+        <Container className={"page"} maxWidth="sm" fixed style={{padding: 0, position: 'relative'}}>
           <Switch location={location}>
             <Route exact path="/" children={<StartPage />} />
             <Route path="/play" children={<KonvaTest/>} />

@@ -50,7 +50,7 @@ const StartPage = () =>{
           </Box>
           
           <Box height={window.innerHeight *0.6}>
-            <img src={TopImage} alt="playimage" width={window.innerWidth}/>
+            <img src={TopImage} alt="playimage" width={window.innerWidth} style={{maxWidth: 552}}/>
           </Box>
           
         </Box>

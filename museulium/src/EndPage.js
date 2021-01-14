@@ -85,8 +85,8 @@ const EndPage = () =>{
             <img
               src={location.state.url}
               alt="drawing-result"
-              width={window.innerWidth *0.5}
-              height={window.innerHeight *0.5}
+              width={(window.innerWidth > 600 ?  600 -6 : window.innerWidth -6) *0.5}
+              height={(window.innerHeight -112 -6) *0.5}
             />
           </Box>
         </Box>

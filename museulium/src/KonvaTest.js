@@ -21,7 +21,7 @@ const met_json = require('./metId.json');
 const metObjs = met_json.metObjIds;
 let historyStep = 0;
 
-const WIDTH = window.innerWidth > 552 ?  552 : window.innerWidth -6;
+const WIDTH = window.innerWidth > 600 ?  600 -6 : window.innerWidth -6;
 const HEIGHT = window.innerHeight -112 -6;
 
 
@@ -214,7 +214,7 @@ const KonvaTest = () => {
               <ColorLensIcon style={{color: 'white'}} />
             </Button>
 
-            <div style={window.innerWidth > 552 ? {position: 'absolute', left: 442} : {position: 'absolute', right: 0}}>
+            <div style={{position: 'absolute', right: 6, bottom: 2}}>
               <CallMet metObj={metObj} />
             </div>
       </div>
