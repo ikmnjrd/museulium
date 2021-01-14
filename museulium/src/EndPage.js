@@ -100,7 +100,7 @@ const EndPage = () =>{
             display="flex"
             justifyContent="center"
           > 
-            <Link to="/play" >
+            <Link to="/play" style={{textDecoration: "none"}}>
               <Button variant="contained" color="primary">
                 Play again
               </Button>

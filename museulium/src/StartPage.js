@@ -42,7 +42,7 @@ const StartPage = () =>{
             justifyContent="center"
             height={window.innerHeight *0.1}
           >
-            <Link to="/play" >
+            <Link to="/play" style={{textDecoration: "none"}}>
               <Button variant="contained" color="primary">
                 play
               </Button>
