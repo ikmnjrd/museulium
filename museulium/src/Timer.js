@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {useHistory} from "react-router-dom";
 import useInterval from 'use-interval';
-import { Typography } from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
+import {makeStyles} from '@material-ui/styles';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import firebase from './firebase'
 import { v4 as uuidv4 } from 'uuid';
@@ -35,10 +36,17 @@ const pushCloudStorage = async (piece,metObj) => {
   return pieceId;
 }
 
+const useStyles = makeStyles((theme) => ({
+  typography: {
+    display: 'inline-block',
+  },
+}));
+
 
 const Timer = ({createImageData,metObj}) =>{
-  const [timeLimit, setTimeLimit] = useState(5);
+  const [timeLimit, setTimeLimit] = useState(9999);
   let history = useHistory();
+  const classes = useStyles();
 
   useInterval(() => {
     setTimeLimit(timeLimit - 1);
@@ -55,12 +63,12 @@ const Timer = ({createImageData,metObj}) =>{
 
 
   return(
-    <React.Fragment>
-      <ScheduleIcon fontSize="small"/>
-      <Typography>
+    <Box style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <ScheduleIcon fontSize="small" className={classes.typography} style={{color: 'white'}}/>
+      <Typography className={classes.typography} style={{color: 'white'}}>
         {timeLimit}
       </Typography>
-    </React.Fragment>
+    </Box>
   )
 
 };
