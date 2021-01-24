@@ -13,7 +13,6 @@
 const functions = require('firebase-functions');
 
 const admin = require('firebase-admin');
-const {createCanvas, loadImage } = require('canvas');
 
 admin.initializeApp();
 
@@ -50,7 +49,7 @@ const createHtml = (pieceId, piece) => {
   const SITEURL = `https://${app_domain}`
   const PAGEURL = `${SITEURL}/p/${pieceId}`
   const TITLE = `What is this picture a copy of？`
-  const DESCRIPTION = 'This website is a game to help you improve your painting skills and to copy famous paintings in time.'
+  const DESCRIPTION = 'This site is a game where you can improve your drawing skills by copying famous pictures in time.'
 
   return `<!DOCTYPE html>
     <html>

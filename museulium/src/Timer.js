@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Timer = ({createImageData,metObj}) =>{
-  const [timeLimit, setTimeLimit] = useState(9999);
+  const [timeLimit, setTimeLimit] = useState(90);
   let history = useHistory();
   const classes = useStyles();
 

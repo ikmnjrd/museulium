@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const KonvaTest = () => {
+const DrawPage = () => {
   const [tool, setTool] = React.useState('pen');
   const [lines, setLines] = React.useState([]);
   const [linesCopy, setLinesCopy] = React.useState([]);
@@ -244,4 +244,4 @@ const KonvaTest = () => {
   );
 };
 
-export default KonvaTest;
+export default DrawPage;

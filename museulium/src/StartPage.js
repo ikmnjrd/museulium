@@ -5,13 +5,27 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid'
 import Typography  from '@material-ui/core/Typography';
 import TopImage from './bijyutsu_paint_man2.png';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  button: {
+    background: 'linear-gradient(45deg, #3B00ED 30%, #3ABCE4 90%)',
+    border: 0,
+    borderRadius: 3,
+    color: 'white',
+    fontSize: 18,
+    padding: '5px 25px',
+  },
+});
 
 
 
 const StartPage = () =>{
+  const classes = useStyles();
+
   return(
     <React.Fragment >
-        <Box bgcolor="info.main">
+        <Box style={{backgroundColor: "#d3d3d3"}}>
           <Box
             display="flex"
             alignItems="center"
@@ -43,7 +57,7 @@ const StartPage = () =>{
             height={window.innerHeight *0.1}
           >
             <Link to="/play" style={{textDecoration: "none"}}>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" className={classes.button}>
                 play
               </Button>
             </Link>

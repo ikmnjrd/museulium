@@ -1,6 +1,6 @@
 import React from 'react';
 import './pageAnimation.css';
-import KonvaTest from './KonvaTest';
+import DrawPage from './DrawPage';
 import StartPage from './StartPage';
 import EndPage from './EndPage';
 import NoMatch from './NoMatch';
@@ -23,7 +23,7 @@ const RouteManager = () => {
         <Container className={"page"} maxWidth="sm" fixed style={{padding: 0, position: 'relative'}}>
           <Switch location={location}>
             <Route exact path="/" children={<StartPage />} />
-            <Route path="/play" children={<KonvaTest/>} />
+            <Route path="/play" children={<DrawPage/>} />
             <Route path="/p/:id" children={<EndPage />} />
             <Route path="/_p/:id" children={<EndPage />} />
             <Route children={<NoMatch />} />
