@@ -7,6 +7,7 @@ import NoMatch from './NoMatch';
 import {Route, Switch, useLocation} from "react-router-dom";
 import {TransitionGroup ,CSSTransition } from "react-transition-group";
 import Container from '@material-ui/core/Container';
+import GridListOfPieces from './GridListOfPieces';
 
 
 
@@ -24,6 +25,7 @@ const RouteManager = () => {
           <Switch location={location}>
             <Route exact path="/" children={<StartPage />} />
             <Route path="/play" children={<DrawPage/>} />
+            <Route path="/list" children={<GridListOfPieces />} />
             <Route path="/p/:id" children={<EndPage />} />
             <Route path="/_p/:id" children={<EndPage />} />
             <Route children={<NoMatch />} />

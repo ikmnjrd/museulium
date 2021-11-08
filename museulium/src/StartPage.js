@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography  from '@material-ui/core/Typography';
 import TopImage from './bijyutsu_paint_man2.png';
 import { makeStyles } from '@material-ui/core/styles';
+import GridListOfPieces from './GridListOfPieces';
 
 const useStyles = makeStyles({
   button: {
@@ -43,7 +44,7 @@ const StartPage = () =>{
               </Grid>
               <Grid item>
                 <Typography variant="h6">
-                  <Box fontStyle="italic" >
+                  <Box fontStyle="italic">
                     You have to draw within the time limit.
                   </Box>
                 </Typography>
@@ -58,7 +59,14 @@ const StartPage = () =>{
           >
             <Link to="/play" style={{textDecoration: "none"}}>
               <Button variant="contained" className={classes.button}>
-                play
+                Play
+              </Button>
+            </Link>
+          </Box>
+          <Box display="flex" justifyContent="center">
+            <Link to="/list" style={{textDecoration: "none"}}>
+              <Button variant="contained" className={classes.button}>
+                Look around
               </Button>
             </Link>
           </Box>
