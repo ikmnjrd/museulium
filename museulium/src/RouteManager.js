@@ -1,5 +1,5 @@
 import React from 'react';
-import './pageAnimation.css';
+import './stylesheets/pageAnimation.css';
 import DrawPage from './DrawPage';
 import StartPage from './StartPage';
 import EndPage from './EndPage';
