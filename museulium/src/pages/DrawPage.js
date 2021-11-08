@@ -5,19 +5,19 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import {makeStyles} from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
-import CallMet from './CallMet';
-import DialMenu from './DialMenu';
-import Tools from './Tools';
-import Timer from './Timer';
+import CallMet from '../components/CallMet';
+import DialMenu from '../components/DialMenu';
+import ToolMenu from '../components/ToolMenu';
+import Timer from '../components/Timer';
 import Button from '@material-ui/core/Button';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
 import ColorLensIcon from '@material-ui/icons/ColorLens';
-import ColorPicker from './ColorPicker';
+import ColorPicker from '../components/ColorPicker';
 
-import './stylesheets/main.css';
+import '../stylesheets/main.css';
 
-const met_json = require('./metId.json');
+const met_json = require('../metId.json');
 const metObjs = met_json.metObjIds;
 let historyStep = 0;
 

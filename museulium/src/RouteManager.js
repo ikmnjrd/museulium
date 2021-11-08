@@ -1,13 +1,13 @@
 import React from 'react';
 import './stylesheets/pageAnimation.css';
-import DrawPage from './DrawPage';
-import StartPage from './StartPage';
-import EndPage from './EndPage';
-import NoMatch from './NoMatch';
+import DrawPage from './pages/DrawPage';
+import StartPage from './pages/StartPage';
+import EndPage from './pages/EndPage';
+import NoMatch from './pages/NoMatch';
 import {Route, Switch, useLocation} from "react-router-dom";
 import {TransitionGroup ,CSSTransition } from "react-transition-group";
 import Container from '@material-ui/core/Container';
-import GridListOfPieces from './GridListOfPieces';
+import GridListOfPieces from './components/GridListOfPieces';
 
 
 

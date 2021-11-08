@@ -12,7 +12,7 @@ import GestureIcon from '@material-ui/icons/Gesture';
 import PublishIcon from '@material-ui/icons/Publish';
 import { makeStyles } from '@material-ui/core/styles';
 import {useHistory} from "react-router-dom";
-import firebase from './firebase'
+import firebase from '../firebase'
 import { v4 as uuidv4 } from 'uuid';
 
 

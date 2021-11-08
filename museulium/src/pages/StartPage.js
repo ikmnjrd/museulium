@@ -4,9 +4,9 @@ import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid'
 import Typography  from '@material-ui/core/Typography';
-import TopImage from './img/bijyutsu_paint_man2.png';
+import TopImage from '../img/bijyutsu_paint_man2.png';
 import { makeStyles } from '@material-ui/core/styles';
-import GridListOfPieces from './GridListOfPieces';
+import GridListOfPieces from '../components/GridListOfPieces';
 
 const useStyles = makeStyles({
   button: {

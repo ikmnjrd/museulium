@@ -3,9 +3,9 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import {Link, useLocation, useParams} from "react-router-dom";
 import {makeStyles} from '@material-ui/core/styles';
-import CallMetText from './CallMetText';
-import SocialShare from './SocialShare';
-import firebase from './firebase'
+import CallMetText from '../components/CallMetText';
+import SocialShare from '../components/SocialShare';
+import firebase from '../firebase'
 
 const useStyles = makeStyles(() => ({
   subject: {

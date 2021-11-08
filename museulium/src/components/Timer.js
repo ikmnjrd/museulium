@@ -4,7 +4,7 @@ import useInterval from 'use-interval';
 import { Box, Typography } from '@material-ui/core';
 import {makeStyles} from '@material-ui/styles';
 import ScheduleIcon from '@material-ui/icons/Schedule';
-import firebase from './firebase'
+import firebase from '../firebase'
 import { v4 as uuidv4 } from 'uuid';
 
 const pushFirebase = async (piece,metObj) => {
