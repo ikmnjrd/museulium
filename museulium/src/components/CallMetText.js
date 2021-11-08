@@ -60,8 +60,8 @@ const CallMetText = ({metObj}) => {
             height="100px"
           />
           <Modal
-          open={open}
-          onClose={handleClose}
+            open={open}
+            onClose={handleClose}
           >
             <img 
               src={items.primaryImage} 
