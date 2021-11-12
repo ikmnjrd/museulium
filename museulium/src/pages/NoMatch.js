@@ -1,7 +1,7 @@
 import React from 'react';
 import {useLocation} from "react-router-dom";
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
 const NoMatch = () =>{
   let location = useLocation();

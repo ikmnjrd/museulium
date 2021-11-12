@@ -1,6 +1,6 @@
 import React from 'react';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 const NoSwipeButton = ({handleNoSwipe}) => {
   const [check,setCheck] = React.useState(true);

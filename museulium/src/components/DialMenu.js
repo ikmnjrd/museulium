@@ -1,16 +1,16 @@
 import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import Divider from '@material-ui/core/Divider';
-import Backdrop from '@material-ui/core/Backdrop';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import DeleteIcon from '@material-ui/icons/Delete';
-import GestureIcon from '@material-ui/icons/Gesture';
-import PublishIcon from '@material-ui/icons/Publish';
-import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Divider from '@mui/material/Divider';
+import Backdrop from '@mui/material/Backdrop';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import DeleteIcon from '@mui/icons-material/Delete';
+import GestureIcon from '@mui/icons-material/Gesture';
+import PublishIcon from '@mui/icons-material/Publish';
+import makeStyles from '@mui/styles/makeStyles';
 import {useHistory} from "react-router-dom";
 import firebase from '../firebase'
 import { v4 as uuidv4 } from 'uuid';
@@ -97,10 +97,7 @@ const DialMenu = ({clearCanvas,handleNoSwipe, createImageData, metObj}) => {
 
   return (
     <React.Fragment>
-      <IconButton
-        onClick={handleMenu}
-        color="inherit"
-      >
+      <IconButton onClick={handleMenu} color="inherit" size="large">
         <MenuIcon style={{color: 'white'}} />
       </IconButton>
       <Backdrop open={open} className={classes.backdrop}>

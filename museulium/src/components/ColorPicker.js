@@ -1,6 +1,6 @@
 import React from 'react';
 import { CirclePicker } from 'react-color';
-import Backdrop from '@material-ui/core/Backdrop';
+import Backdrop from '@mui/material/Backdrop';
 
 const ColorPicker = ({canChangeColor, color, setLineStroke, handlePalette, position}) => {
 

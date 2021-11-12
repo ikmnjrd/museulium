@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {useHistory} from "react-router-dom";
 import useInterval from 'use-interval';
-import { Box, Typography } from '@material-ui/core';
-import {makeStyles} from '@material-ui/styles';
-import ScheduleIcon from '@material-ui/icons/Schedule';
+import { Box, Typography } from '@mui/material';
+import {makeStyles} from '@mui/styles';
+import ScheduleIcon from '@mui/icons-material/Schedule';
 import firebase from '../firebase'
 import { v4 as uuidv4 } from 'uuid';
 

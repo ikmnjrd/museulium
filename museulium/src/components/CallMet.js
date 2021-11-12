@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from '@material-ui/core/Modal';
+import Modal from '@mui/material/Modal';
 
 const getModalStyle= () => {
   return {

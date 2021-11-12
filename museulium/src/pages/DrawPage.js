@@ -1,18 +1,14 @@
 import React from 'react';
 import Konva from 'konva';
 import { Stage, Layer, Line} from 'react-konva';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import {makeStyles} from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
+import makeStyles from '@mui/styles/makeStyles';
 import CallMet from '../components/CallMet';
 import DialMenu from '../components/DialMenu';
-import ToolMenu from '../components/ToolMenu';
 import Timer from '../components/Timer';
-import Button from '@material-ui/core/Button';
-import UndoIcon from '@material-ui/icons/Undo';
-import RedoIcon from '@material-ui/icons/Redo';
-import ColorLensIcon from '@material-ui/icons/ColorLens';
+import Button from '@mui/material/Button';
+import UndoIcon from '@mui/icons-material/Undo';
+import RedoIcon from '@mui/icons-material/Redo';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
 import ColorPicker from '../components/ColorPicker';
 
 import '../stylesheets/main.css';
@@ -113,14 +109,6 @@ const DrawPage = () => {
   const clearCanvas = () =>{
     stageRef.current.children[0].destroyChildren();
     stageRef.current.clear();
-  }
-
-  const setToolChild = (value) =>{
-    setTool(value);
-  }
-
-  const getToolChild = () =>{
-    return {tool: tool};
   }
 
   const handleUndo = () => {

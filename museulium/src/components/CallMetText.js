@@ -1,8 +1,8 @@
 import React from 'react';
-import Box from '@material-ui/core/Box';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Modal from '@material-ui/core/Modal';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Modal from '@mui/material/Modal';
 
 const getModalStyle= () => {
   return {

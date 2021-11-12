@@ -1,11 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import makeStyles from '@mui/styles/makeStyles';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import ListSubheader from '@mui/material/ListSubheader';
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
 import firebase from '../firebase'
 
 const useStyles = makeStyles((theme) => ({
@@ -46,7 +46,7 @@ const getStorageItem = async (id) =>{
 
 
 
-const GridListOfPieces = () => {
+const ImageListOfPieces = () => {
   const classes = useStyles();
   const [images, setImages] = React.useState([]);
 
@@ -66,14 +66,14 @@ const GridListOfPieces = () => {
   
   return (
     <div className={classes.root}>
-      <GridList cellHeight={540} className={classes.gridList}>
-        {/* <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
+      <ImageList cellHeight={540} className={classes.gridList}>
+        {/* <ImageListItem key="Subheader" cols={3} style={{ height: 'auto' }}>
           <ListSubheader component="div">December</ListSubheader>
-        </GridListTile> */}
+        </ImageListItem> */}
         {images.map((item) => (
-          <GridListTile key={item.url}>
+          <ImageListItem key={item.url}>
             <img src={item.url} alt={item.title} />
-            {/* <GridListTileBar
+            {/* <ImageListItemBar
               title="title"
               subtitle={<span>by: {item.author}</span>}
               actionIcon={
@@ -82,10 +82,10 @@ const GridListOfPieces = () => {
                 </IconButton>
               }
             /> */}
-          </GridListTile>
+          </ImageListItem>
         ))}
-      </GridList>
+      </ImageList>
     </div>
   );
 }
-export default GridListOfPieces;
+export default ImageListOfPieces;
