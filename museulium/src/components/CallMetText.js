@@ -33,7 +33,7 @@ const CallMetText = ({metObj}) => {
           setError(error);
         }
       )
-  }, [])
+  }, [metObj])
 
   const handleOpen = () => {
     setOpen(true);
