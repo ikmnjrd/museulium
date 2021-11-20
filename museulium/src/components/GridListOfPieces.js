@@ -5,12 +5,11 @@ import ImageListItem from '@mui/material/ImageListItem';
 import firebase from '../firebase'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  pieces_area: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -59,8 +58,8 @@ const ImageListOfPieces = () => {
   
   
   return (
-    <div className={classes.root}>
-      <ImageList cellHeight={540} className={classes.gridList}>
+    <div className={classes.pieces_area}>
+      <ImageList cols={6} className={classes.gridList}>
         {images.map((item) => (
           <ImageListItem key={item.url}>
             <img src={item.url} alt={item.title} />
